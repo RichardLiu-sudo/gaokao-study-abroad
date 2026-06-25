@@ -214,7 +214,7 @@ body {
 
 <script>
 const data = {
-  "630+": {
+  "590+": {
     label: "超特控线 50 分以上",
     subtitle: "核心策略：海外直申世界 TOP50，无需预科，2026 秋季入学",
     emoji: ["🇸🇬","🇭🇰"],
@@ -223,18 +223,18 @@ const data = {
       {name:"香港大学 / 港中文 / 港科大", fee:"25-35 万/年", timeline:"6月出分→月底截止→7月面试→8月offer→9月入学", condition:"独立招生，英语单科 130+，雅思 6.5+", fit:"离家近、英文环境强校"}
     ]
   },
-  "520-630": {
+  "540-590": {
     label: "特控线 / 一本线",
     subtitle: "核心策略：名校直申（含 UCAS Clearing 补录），2026 秋季入学",
     emoji: ["🇬🇧","🇭🇰","🇲🇴","🇮🇪"],
     paths: [
       {name:"英国格拉斯哥 / 伯明翰 / 南安普顿 / 利兹", fee:"25-35 万/年", timeline:"6月→7月 UCAS Clearing→8月offer→9月入学", condition:"高考 75%-85%，雅思 6.5", fit:"想去英国但差一点够G5"},
-      {name:"香港城市大学 / 理工大学", fee:"18-25 万/年", timeline:"6月出分→7月截止→8月offer→9月入学", condition:"超一本线 80-100 分，雅思 6.5", fit:"离家近、英文环境"},
+      {name:"香港城市大学 / 理工大学", fee:"18-25 万/年", timeline:"6月出分→7月截止→8月offer→9月入学", condition:"超一本线 80-100 分（约 620-640），雅思 6.5", fit:"离家近、英文环境"},
       {name:"澳门大学 / 澳门科技大学", fee:"12-18 万/年", timeline:"6月出分→7月申请→8月offer→9月入学", condition:"高考直申，雅思 6.0+", fit:"预算适中、喜欢澳门"},
       {name:"爱尔兰圣三一大学 / 都柏林大学", fee:"15-22 万/年", timeline:"6月→7月申请→8月offer→9月入学", condition:"高考 68%-80% 分数，雅思 6.5", fit:"英语国家、毕业 3 年工签"}
     ]
   },
-  "430-520": {
+  "440-540": {
     label: "本科线至一本线",
     subtitle: "核心策略：预科 / 国际大一衔接 + 直申，2026 秋季入学",
     emoji: ["🇬🇧","🇮🇪","🇭🇰"],
@@ -244,7 +244,7 @@ const data = {
       {name:"香港恒生大学 / 东华学院", fee:"15-20 万/年", timeline:"6月出分→7月申请→8月offer→9月入学", condition:"二本线直申，雅思 5.5-6.0", fit:"拿香港学位"}
     ]
   },
-  "300-430": {
+  "300-440": {
     label: "300 分至本科线",
     subtitle: "核心策略：高性价比预科 / 快捷课程弯道超车，2026 秋季入学",
     emoji: ["🇬🇧","🇺🇸","🇨🇳"],
@@ -265,10 +265,10 @@ const data = {
 };
 
 function getTier(score) {
-  if (score >= 630) return "630+";
-  if (score >= 520) return "520-630";
-  if (score >= 430) return "430-520";
-  if (score >= 300) return "300-430";
+  if (score >= 590) return "590+";
+  if (score >= 540) return "540-590";
+  if (score >= 440) return "440-540";
+  if (score >= 300) return "300-440";
   return "<300";
 }
 
