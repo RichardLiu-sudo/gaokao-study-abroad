@@ -20,7 +20,6 @@ body {
 .header h1 { font-size: 2.4em; font-weight: 700; margin-bottom: 8px; letter-spacing: 2px; }
 .header p { font-size: 1.1em; opacity: 0.75; }
 
-/* 首页输入区 */
 .input-section {
   max-width: 520px;
   margin: 0 auto 40px;
@@ -56,9 +55,8 @@ body {
 }
 .input-wrapper button:hover { opacity: 0.9; }
 
-/* 结果区 */
 .result-section {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 20px 120px;
   display: none;
@@ -74,7 +72,6 @@ body {
   border-left: 4px solid #e94560;
 }
 
-/* 路径卡片 */
 .card {
   background: #fff;
   border-radius: 14px;
@@ -111,7 +108,6 @@ body {
 .tag-condition { background: #fff3e0; color: #e65100; }
 .tag-fit { background: #fce4ec; color: #c62828; }
 
-/* 返回按钮 */
 .back-btn-wrap {
   text-align: center;
   margin: 30px 0 20px;
@@ -128,13 +124,12 @@ body {
 }
 .back-btn:hover { background: rgba(255,255,255,0.25); }
 
-/* 底部固定 */
 .footer-fixed {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: #aaa;
@@ -146,7 +141,6 @@ body {
 }
 .footer-fixed strong { color: #e94560; }
 
-/* 响应式 */
 @media (max-width: 600px) {
   .header h1 { font-size: 1.8em; }
   .input-wrapper { flex-direction: column; border-radius: 14px; }
@@ -160,13 +154,13 @@ body {
 <body>
 
 <div class="header">
-  <h1>高考分能去哪留学</h1>
+  <h1>2026 高考分能去哪留学</h1>
   <p>输入你的高考分数，查看匹配的留学路径</p>
 </div>
 
 <div class="input-section" id="inputSection">
   <div class="input-wrapper">
-    <input type="number" id="scoreInput" placeholder="输入你的高考分数" min="0" max="750">
+    <input type="number" id="scoreInput" placeholder="输入你的高考分数（750分制）" min="0" max="750">
     <button onclick="search()">查看我能去哪</button>
   </div>
 </div>
@@ -174,71 +168,85 @@ body {
 <div class="result-section" id="resultSection"></div>
 
 <div class="footer-fixed">
-  不看高考分的路径：<strong>日本语言学校→本科</strong>（无需高考成绩，日语N2即可）｜<strong>韩国语学院→本科</strong>（无需高考，TOPIK3级）｜<strong>瑞士酒店管理学院</strong>（面试录取）
+  <strong>低分不焦虑</strong>：马来西亚公立大学凭高中成绩直申，全程 25-40 万｜<strong>爱尔兰</strong>高威/科克/利默里克无需高考，毕业享 3 年工签 ｜<strong>美国社区大学 2+2</strong> 弯道超车名校大三
 </div>
 
 <script>
 const data = {
-  "600+": {
-    label: "600分及以上",
-    emoji: ["🇭🇰","🇸🇬","🇬🇧","🇦🇺","🇺🇸"],
+  "630+": {
+    label: "超特控线 50 分以上",
+    subtitle: "核心策略：海外直申世界 TOP50，无需预科，一步到位读大一",
+    emoji: ["🇸🇬","🇭🇰","🇬🇧","🇨🇦","🇦🇺","🇺🇸"],
     paths: [
-      {name:"香港大学 / 港中文 / 港科大直录", fee:"25-35万/年", timeline:"6月出分→月底截止→7月面试→8月offer→9月入学", condition:"一本线+130，英语135+，有面试", fit:"英语极强、综合素质突出的学霸"},
-      {name:"新加坡国立 / 南洋理工", fee:"20-30万/年", timeline:"6月出分→7月申请→8-9月offer→次年入学", condition:"一本线+100，雅思6.5", fit:"理工科突出、追求亚洲顶级教育"},
-      {name:"英国G5预科或直录", fee:"35-45万/年", timeline:"6月出分→7月UCAS补录→8月offer→9月入学", condition:"高考80%+，雅思6.5-7.0", fit:"目标明确、预算充足的学术型选手"},
-      {name:"澳洲八大直录", fee:"25-35万/年", timeline:"6月出分→7月申请→2周offer→次年2月入学", condition:"一本线以上，雅思6.5", fit:"想去英语国家但不想卷英美"},
-      {name:"美国Top50直申", fee:"40-55万/年", timeline:"需提前一年准备，高考后申次年秋季", condition:"托福100+/雅思7.0，SAT1450+", fit:"有长期规划、不急于当年入学"}
+      {name:"新加坡国立大学 / 南洋理工大学", fee:"20-30万/年", timeline:"6月出分→7月申请→8-9月offer→入学", condition:"高考直申大一，雅思 6.5-7.0", fit:"亚洲顶级教育、英语环境"},
+      {name:"香港大学 / 港中文 / 港科大", fee:"25-35万/年", timeline:"6月出分→月底截止→7月面试→8月offer→9月入学", condition:"独立招生，英语单科 130+，雅思 6.5+", fit:"想离家近、英文环境强校"},
+      {name:"英国剑桥大学（AST遴选）", fee:"35-45万/年", timeline:"6月出分→AST遴选→录取→9月入学", condition:"高考 + AST 辅助，雅思 7.5+", fit:"超高分学霸、学术背景极强"},
+      {name:"加拿大多伦多 / 麦吉尔 / UBC", fee:"20-30万/年", timeline:"高考后申次年秋季入学", condition:"高考直申大一，雅思 6.5+", fit:"喜欢北美、预算较充裕"},
+      {name:"澳洲悉大 / 新南威尔士 / 澳国立", fee:"25-35万/年", timeline:"6月出分→7月申请→2周offer→次年2月入学", condition:"高考 70%-75%+ 直入大一，雅思 6.5", fit:"想去英语国家但不想卷英美"},
+      {name:"美国布朗 / NYU / 密歇根安娜堡", fee:"40-55万/年", timeline:"需提前一年准备，高考后申次年秋季", condition:"高考成绩综合评估，托福 100+/雅思 7.0-8.0", fit:"有长期规划、英文极强、背景突出"}
     ]
   },
-  "520-600": {
-    label: "520-599分",
-    emoji: ["🇦🇺","🇬🇧","🇨🇦","🇳🇱","🇭🇰"],
+  "520-630": {
+    label: "特控线 / 一本线",
+    subtitle: "核心策略：名校直申为主，中外合作 + 香港副学士兜底",
+    emoji: ["🇬🇧","🇦🇺","🇭🇰","🇲🇴","🇳🇿","🇨🇦","🇮🇪","🇺🇸"],
     paths: [
-      {name:"澳洲八大预科 → 本科", fee:"20-30万/年", timeline:"6月→7月申预科→8月offer→10月入学预科", condition:"高二完成，雅思5.5", fit:"高考不如预期但想去好学校"},
-      {name:"英国Top20预科", fee:"25-35万/年", timeline:"6月→7月申请→8月offer→9月入学预科→次年升本科", condition:"高二完成，雅思5.5-6.0", fit:"想去英国但成绩差一点"},
-      {name:"加拿大多伦多/UBC/麦吉尔", fee:"20-30万/年", timeline:"高考后申次年秋季", condition:"高中GPA85%+，雅思6.5", fit:"喜欢北美氛围"},
-      {name:"荷兰阿姆斯特丹/代尔夫特/莱顿", fee:"15-25万/年", timeline:"6月→7月申请→8月offer→9月入学", condition:"高考成绩+雅思6.0-6.5", fit:"预算有限但想去欧洲英语环境"},
-      {name:"香港城市大学/理工/浸会", fee:"18-25万/年", timeline:"6月出分→7月截止→8月offer→9月入学", condition:"一本线+50-80，英语120+", fit:"想离家近、英文环境"}
+      {name:"英国格拉斯哥 / 伯明翰 / 南安普顿 / 利兹", fee:"25-35万/年", timeline:"6月→7月申请→8月offer→9月入学", condition:"高考 75%-85%，雅思 6.5", fit:"想去英国但差一点够G5"},
+      {name:"澳洲悉大 / 新南威尔士 / 昆士兰 / 蒙纳士", fee:"25-35万/年", timeline:"6月→7月申请→offer→入学", condition:"高考直申大一，雅思 6.5", fit:"想去澳洲八大读热门专业"},
+      {name:"香港城市大学 / 理工大学", fee:"18-25万/年", timeline:"6月出分→7月截止→8月offer→9月入学", condition:"超一本线 80-100 分，雅思 6.5", fit:"想离家近、英文环境"},
+      {name:"澳门大学 / 澳门科技大学", fee:"12-18万/年", timeline:"6月出分→7月申请→8月offer→9月入学", condition:"高考直申，雅思 6.0+", fit:"预算适中、喜欢澳门"},
+      {name:"新西兰八大公立（奥克兰/奥塔哥等）", fee:"15-22万/年", timeline:"6月出分→7月申请→8月offer→入学", condition:"高考直申，雅思 6.0-6.5", fit:"喜欢自然风光、安全环境"},
+      {name:"加拿大西安大略 / 萨省 / 曼尼托巴 / 约克", fee:"20-28万/年", timeline:"高考后申次年秋季", condition:"高考 + 高中成绩，雅思 6.5", fit:"喜欢北美、多元文化"},
+      {name:"爱尔兰圣三一大学 / 都柏林大学", fee:"15-22万/年", timeline:"6月→7月申请→8月offer→9月入学", condition:"高考 68%-80% 分数，雅思 6.5", fit:"英语国家、毕业 3 年工签"},
+      {name:"美国 UCI / 威廉玛丽 / 普渡 / RIT", fee:"35-50万/年", timeline:"高考后申次年秋季", condition:"高考成绩直申，托福 79-100/雅思 6.5-7.0", fit:"目标美国、有长期规划"}
     ]
   },
-  "450-520": {
-    label: "450-519分",
-    emoji: ["🇬🇧","🇦🇺","🇲🇾","🇮🇪","🇨🇳"],
+  "430-520": {
+    label: "本科线至一本线",
+    subtitle: "核心策略：预科（Foundation）/ 国际大一（Diploma）衔接 + 中外合办",
+    emoji: ["🇬🇧","🇦🇺","🇺🇸","🇳🇿","🇮🇪","🇭🇰","🇺🇸"],
     paths: [
-      {name:"英国Top30-50预科", fee:"20-28万/年", timeline:"6月→7月→8月offer→9月入学预科", condition:"高二完成，雅思5.0-5.5", fit:"想去英国但成绩中等"},
-      {name:"澳洲非八大", fee:"20-28万/年", timeline:"6月→7月→offer→入学", condition:"高考50%+，雅思6.0", fit:"想去澳洲但八大够不着"},
-      {name:"马来西亚诺丁汉/莫纳什马来", fee:"8-15万/年", timeline:"6月→7月→offer→入学", condition:"高考60%+，雅思6.0", fit:"预算有限但要英澳名校学位"},
-      {name:"爱尔兰圣三一/都柏林大学", fee:"15-22万/年", timeline:"6月→7月→offer→9月入学", condition:"高考60%+，雅思6.0-6.5", fit:"欧洲英语国家、学制短"},
-      {name:"中外合作办学4+0", fee:"10-18万/年(国内)", timeline:"6月→7月申请→8月offer→9月入学", condition:"一本线附近，英语115+", fit:"想拿国外学位但不离开国内"}
+      {name:"英国曼大 / 布里斯托 / KCL 预科", fee:"20-28万/年", timeline:"6月→7月申请→8月offer→9月入学预科→次年升本科", condition:"预科 / 国际大一，雅思 5.0-6.0", fit:"想去英国但成绩差一点"},
+      {name:"澳洲悉科大 / 麦考瑞 / RMIT / 伍伦贡", fee:"20-28万/年", timeline:"6月→7月→offer→入学", condition:"二本线直录 / 预科，雅思 5.5-6.5", fit:"想去澳洲但八大够不着"},
+      {name:"美国 SUNY 石溪 / UC 河滨 预科", fee:"30-40万/年", timeline:"高考后申请次年秋季", condition:"预科 + 本科，雅思 6.0+", fit:"目标是美国公立强校"},
+      {name:"新西兰奥克兰大学 / 怀卡托大学", fee:"15-22万/年", timeline:"6月→7月→offer→入学", condition:"预科 / 直录，雅思 5.5-6.5", fit:"喜欢新西兰、预算适中"},
+      {name:"爱尔兰圣三一/都柏林预科、高威/科克", fee:"15-22万/年", timeline:"6月→7月申请→offer→入学", condition:"预科/高中成绩直申（无需高考），雅思 5.5-6.5", fit:"英语国家、毕业 3 年工签"},
+      {name:"香港恒生大学 / 东华学院", fee:"15-20万/年", timeline:"6月出分→7月申请→8月offer→9月入学", condition:"二本线直申，雅思 5.5-6.0", fit:"想拿香港学位"},
+      {name:"美国贡萨加 / 特拉华 / 旧金山大学 / IIT", fee:"30-45万/年", timeline:"6月→7月申请→offer→入学", condition:"高考直申，高考英语 105-125 可替代托福", fit:"美国直申、部分免语言考试"}
     ]
   },
-  "400-450": {
-    label: "400-449分",
-    emoji: ["🇩🇪","🇫🇷","🇪🇸","🇨🇳"],
+  "300-430": {
+    label: "300 分至本科线",
+    subtitle: "核心策略：高性价比预科 / 快捷课程 / 中外合作弯道超车",
+    emoji: ["🇦🇺","🇬🇧","🇨🇦","🇺🇸","🇳🇿","🇨🇳"],
     paths: [
-      {name:"德国预科 + 本科", fee:"8-15万/年", timeline:"高考后→语言→次年入学", condition:"高考成绩+德语B1-B2", fit:"理科好、愿意学德语"},
-      {name:"法国公立大学预科", fee:"5-12万/年", timeline:"高考后→语言→次年入学", condition:"高考成绩+法语B1", fit:"预算有限、喜欢欧洲"},
-      {name:"西班牙公立大学", fee:"8-15万/年", timeline:"高考后申请→当年或次年入学", condition:"高考成绩转换", fit:"喜欢阳光、低成本"},
-      {name:"国内2+2项目", fee:"国内10万+海外25万+/年", timeline:"6月→7月申请→9月入学国内→2年后出国", condition:"本科线附近", fit:"想缓冲两年再出国"}
+      {name:"澳洲南澳 / 迪肯 / 格里菲斯大学", fee:"20-28万/年", timeline:"6月→7月申请→offer→入学", condition:"国际大一（Diploma）→ 大二，雅思 5.5-6.0", fit:"不延长学制、低成本入澳洲"},
+      {name:"英国皇家霍洛威 / 东英吉利 / 埃塞克斯", fee:"18-25万/年", timeline:"6月→7月申请→8月offer→9月入学预科", condition:"预科 → 本科，雅思 5.0-5.5", fit:"想去英国、不介意预科过渡"},
+      {name:"加拿大布鲁克 / 温莎等综合类大学", fee:"18-25万/年", timeline:"高考后申请→次年入学", condition:"预科 / 转学分课程，雅思 5.5-6.0", fit:"喜欢北美、愿意走转学分"},
+      {name:"美国社区大学 2+2 转名校", fee:"前两年 15-20万/年，后两年 30-40万/年", timeline:"随时申请→语言→入学→2年后转名校大三", condition:"无需高考，雅思 5.5+", fit:"高考失利想逆袭美国名校"},
+      {name:"新西兰林肯 / 坎特伯雷 / 怀卡托", fee:"15-22万/年", timeline:"6月→7月申请→offer→入学", condition:"预科 → 本科，雅思 5.5-6.0", fit:"安全环境、低预算英语国家"},
+      {name:"中外合作办学项目", fee:"10-18万/年（国内阶段）", timeline:"6月→7月申请→9月入学国内", condition:"国内就读，拿海外学位，视项目而定", fit:"想缓冲、降成本、不出国拿学位"}
     ]
   },
-  "<400": {
-    label: "400分以下",
-    emoji: ["🇺🇸","🇸🇬","🇪🇸"],
+  "<300": {
+    label: "300 分以下",
+    subtitle: "核心策略：低成本国家直申 / 语言过渡 / 定向合作项目",
+    emoji: ["🇲🇾","🇮🇪","🇬🇧","🇦🇺"],
     paths: [
-      {name:"美国社区大学 → 美本2+2", fee:"前两年15-20万，后两年30-40万/年", timeline:"随时申请→语言→入学", condition:"无需高考，雅思5.5", fit:"高考失利想逆袭美国名校"},
-      {name:"新加坡SIM / Kaplan", fee:"15-22万/年", timeline:"随时申请→入学", condition:"雅思5.5或校内测试", fit:"快速拿英美澳学位"},
-      {name:"西班牙/意大利公立大学", fee:"8-12万/年", timeline:"高考后→语言→入学", condition:"基本不看高考，语言+预科", fit:"低预算欧洲留学"}
+      {name:"马来西亚公立大学 + 私立双联项目", fee:"全程 25-40 万", timeline:"6月→7月申请→offer→入学", condition:"凭高中成绩直申（无需高考），雅思 5.0-5.5", fit:"最低成本拿英美澳学位"},
+      {name:"爱尔兰高威 / 科克 / 利默里克大学", fee:"全程 50-70 万", timeline:"6月→7月申请→offer→入学", condition:"凭高中成绩直申（无需高考），雅思 5.5-6.0", fit:"英语国家、毕业 3 年无条件工签"},
+      {name:"英国综合类大学预科", fee:"全程 60-90 万", timeline:"6月→7月申请→8月offer→9月入学预科", condition:"预科 → 本科，雅思 5.0-5.5", fit:"预算充足、想去英国"},
+      {name:"澳洲 TAFE 职业教育 → 大学", fee:"全程 50-80 万", timeline:"随时申请→入学→技能课程→转学分入大学", condition:"技能课程 → 转学分，雅思 5.5+", fit:"想走技能路线、转大学"}
     ]
   }
 };
 
 function getTier(score) {
-  if (score >= 600) return "600+";
-  if (score >= 520) return "520-600";
-  if (score >= 450) return "450-520";
-  if (score >= 400) return "400-450";
-  return "<400";
+  if (score >= 630) return "630+";
+  if (score >= 520) return "520-630";
+  if (score >= 430) return "430-520";
+  if (score >= 300) return "300-430";
+  return "<300";
 }
 
 function search() {
@@ -254,7 +262,8 @@ function search() {
   var d = data[tier];
 
   var html = "";
-  html += '<div class="tier-header">你的分数 ' + score + ' 分 — ' + d.label + ' 档位</div>';
+  html += '<div class="tier-header">' + score + ' 分 — ' + d.label + '</div>';
+  html += '<p style="color:rgba(255,255,255,0.7);font-size:0.95em;margin:-8px 0 20px;padding-left:12px;">' + d.subtitle + '</p>';
   for (var i = 0; i < d.paths.length; i++) {
     var p = d.paths[i];
     html += '<div class="card">';
