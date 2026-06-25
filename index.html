@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高考分能去哪留学</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  min-height: 100vh;
+  color: #333;
+}
+.header {
+  text-align: center;
+  padding: 50px 20px 30px;
+  color: #fff;
+}
+.header h1 { font-size: 2.4em; font-weight: 700; margin-bottom: 8px; letter-spacing: 2px; }
+.header p { font-size: 1.1em; opacity: 0.75; }
+
+/* 首页输入区 */
+.input-section {
+  max-width: 520px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+  text-align: center;
+}
+.input-wrapper {
+  display: flex;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+.input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1.5em;
+  padding: 18px 24px;
+  min-width: 0;
+}
+.input-wrapper input::placeholder { color: #bbb; }
+.input-wrapper button {
+  border: none;
+  background: linear-gradient(135deg, #e94560, #c23152);
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 18px 28px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.input-wrapper button:hover { opacity: 0.9; }
+
+/* 结果区 */
+.result-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 120px;
+  display: none;
+}
+.result-section.show { display: block; }
+
+.tier-header {
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 30px 0 16px;
+  padding-left: 8px;
+  border-left: 4px solid #e94560;
+}
+
+/* 路径卡片 */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  display: flex;
+  gap: 18px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
+.card-emoji {
+  font-size: 2.8em;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.card-body { flex: 1; min-width: 0; }
+.card-title { font-size: 1.15em; font-weight: 700; color: #1a1a2e; margin-bottom: 10px; }
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+.tag-fee { background: #e8f5e9; color: #2e7d32; }
+.tag-timeline { background: #e3f2fd; color: #1565c0; }
+.tag-condition { background: #fff3e0; color: #e65100; }
+.tag-fit { background: #fce4ec; color: #c62828; }
+
+/* 返回按钮 */
+.back-btn-wrap {
+  text-align: center;
+  margin: 30px 0 20px;
+}
+.back-btn {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 12px 36px;
+  border-radius: 30px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.back-btn:hover { background: rgba(255,255,255,0.25); }
+
+/* 底部固定 */
+.footer-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #aaa;
+  text-align: center;
+  padding: 14px 20px;
+  font-size: 0.9em;
+  line-height: 1.6;
+  z-index: 10;
+}
+.footer-fixed strong { color: #e94560; }
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.8em; }
+  .input-wrapper { flex-direction: column; border-radius: 14px; }
+  .input-wrapper input { font-size: 1.2em; padding: 14px 18px; }
+  .input-wrapper button { padding: 14px; font-size: 1em; border-radius: 0 0 14px 14px; }
+  .card { flex-direction: column; gap: 8px; }
+  .card-emoji { font-size: 2.2em; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>高考分能去哪留学</h1>
+  <p>输入你的高考分数，查看匹配的留学路径</p>
+</div>
+
+<div class="input-section" id="inputSection">
+  <div class="input-wrapper">
+    <input type="number" id="scoreInput" placeholder="输入你的高考分数" min="0" max="750">
+    <button onclick="search()">查看我能去哪</button>
+  </div>
+</div>
+
+<div class="result-section" id="resultSection"></div>
+
+<div class="footer-fixed">
+  不看高考分的路径：<strong>日本语言学校→本科</strong>（无需高考成绩，日语N2即可）｜<strong>韩国语学院→本科</strong>（无需高考，TOPIK3级）｜<strong>瑞士酒店管理学院</strong>（面试录取）
+</div>
+
+<script>
+const data = {
+  "600+": {
+    label: "600分及以上",
+    emoji: ["🇭🇰","🇸🇬","🇬🇧","🇦🇺","🇺🇸"],
+    paths: [
+      {name:"香港大学 / 港中文 / 港科大直录", fee:"25-35万/年", timeline:"6月出分→月底截止→7月面试→8月offer→9月入学", condition:"一本线+130，英语135+，有面试", fit:"英语极强、综合素质突出的学霸"},
+      {name:"新加坡国立 / 南洋理工", fee:"20-30万/年", timeline:"6月出分→7月申请→8-9月offer→次年入学", condition:"一本线+100，雅思6.5", fit:"理工科突出、追求亚洲顶级教育"},
+      {name:"英国G5预科或直录", fee:"35-45万/年", timeline:"6月出分→7月UCAS补录→8月offer→9月入学", condition:"高考80%+，雅思6.5-7.0", fit:"目标明确、预算充足的学术型选手"},
+      {name:"澳洲八大直录", fee:"25-35万/年", timeline:"6月出分→7月申请→2周offer→次年2月入学", condition:"一本线以上，雅思6.5", fit:"想去英语国家但不想卷英美"},
+      {name:"美国Top50直申", fee:"40-55万/年", timeline:"需提前一年准备，高考后申次年秋季", condition:"托福100+/雅思7.0，SAT1450+", fit:"有长期规划、不急于当年入学"}
+    ]
+  },
+  "520-600": {
+    label: "520-599分",
+    emoji: ["🇦🇺","🇬🇧","🇨🇦","🇳🇱","🇭🇰"],
+    paths: [
+      {name:"澳洲八大预科 → 本科", fee:"20-30万/年", timeline:"6月→7月申预科→8月offer→10月入学预科", condition:"高二完成，雅思5.5", fit:"高考不如预期但想去好学校"},
+      {name:"英国Top20预科", fee:"25-35万/年", timeline:"6月→7月申请→8月offer→9月入学预科→次年升本科", condition:"高二完成，雅思5.5-6.0", fit:"想去英国但成绩差一点"},
+      {name:"加拿大多伦多/UBC/麦吉尔", fee:"20-30万/年", timeline:"高考后申次年秋季", condition:"高中GPA85%+，雅思6.5", fit:"喜欢北美氛围"},
+      {name:"荷兰阿姆斯特丹/代尔夫特/莱顿", fee:"15-25万/年", timeline:"6月→7月申请→8月offer→9月入学", condition:"高考成绩+雅思6.0-6.5", fit:"预算有限但想去欧洲英语环境"},
+      {name:"香港城市大学/理工/浸会", fee:"18-25万/年", timeline:"6月出分→7月截止→8月offer→9月入学", condition:"一本线+50-80，英语120+", fit:"想离家近、英文环境"}
+    ]
+  },
+  "450-520": {
+    label: "450-519分",
+    emoji: ["🇬🇧","🇦🇺","🇲🇾","🇮🇪","🇨🇳"],
+    paths: [
+      {name:"英国Top30-50预科", fee:"20-28万/年", timeline:"6月→7月→8月offer→9月入学预科", condition:"高二完成，雅思5.0-5.5", fit:"想去英国但成绩中等"},
+      {name:"澳洲非八大", fee:"20-28万/年", timeline:"6月→7月→offer→入学", condition:"高考50%+，雅思6.0", fit:"想去澳洲但八大够不着"},
+      {name:"马来西亚诺丁汉/莫纳什马来", fee:"8-15万/年", timeline:"6月→7月→offer→入学", condition:"高考60%+，雅思6.0", fit:"预算有限但要英澳名校学位"},
+      {name:"爱尔兰圣三一/都柏林大学", fee:"15-22万/年", timeline:"6月→7月→offer→9月入学", condition:"高考60%+，雅思6.0-6.5", fit:"欧洲英语国家、学制短"},
+      {name:"中外合作办学4+0", fee:"10-18万/年(国内)", timeline:"6月→7月申请→8月offer→9月入学", condition:"一本线附近，英语115+", fit:"想拿国外学位但不离开国内"}
+    ]
+  },
+  "400-450": {
+    label: "400-449分",
+    emoji: ["🇩🇪","🇫🇷","🇪🇸","🇨🇳"],
+    paths: [
+      {name:"德国预科 + 本科", fee:"8-15万/年", timeline:"高考后→语言→次年入学", condition:"高考成绩+德语B1-B2", fit:"理科好、愿意学德语"},
+      {name:"法国公立大学预科", fee:"5-12万/年", timeline:"高考后→语言→次年入学", condition:"高考成绩+法语B1", fit:"预算有限、喜欢欧洲"},
+      {name:"西班牙公立大学", fee:"8-15万/年", timeline:"高考后申请→当年或次年入学", condition:"高考成绩转换", fit:"喜欢阳光、低成本"},
+      {name:"国内2+2项目", fee:"国内10万+海外25万+/年", timeline:"6月→7月申请→9月入学国内→2年后出国", condition:"本科线附近", fit:"想缓冲两年再出国"}
+    ]
+  },
+  "<400": {
+    label: "400分以下",
+    emoji: ["🇺🇸","🇸🇬","🇪🇸"],
+    paths: [
+      {name:"美国社区大学 → 美本2+2", fee:"前两年15-20万，后两年30-40万/年", timeline:"随时申请→语言→入学", condition:"无需高考，雅思5.5", fit:"高考失利想逆袭美国名校"},
+      {name:"新加坡SIM / Kaplan", fee:"15-22万/年", timeline:"随时申请→入学", condition:"雅思5.5或校内测试", fit:"快速拿英美澳学位"},
+      {name:"西班牙/意大利公立大学", fee:"8-12万/年", timeline:"高考后→语言→入学", condition:"基本不看高考，语言+预科", fit:"低预算欧洲留学"}
+    ]
+  }
+};
+
+function getTier(score) {
+  if (score >= 600) return "600+";
+  if (score >= 520) return "520-600";
+  if (score >= 450) return "450-520";
+  if (score >= 400) return "400-450";
+  return "<400";
+}
+
+function search() {
+  var input = document.getElementById("scoreInput");
+  var score = parseInt(input.value);
+  if (isNaN(score) || score < 0) {
+    input.focus();
+    input.style.border = "2px solid #e94560";
+    setTimeout(function(){ input.style.border = ""; }, 1500);
+    return;
+  }
+  var tier = getTier(score);
+  var d = data[tier];
+
+  var html = "";
+  html += '<div class="tier-header">你的分数 ' + score + ' 分 — ' + d.label + ' 档位</div>';
+  for (var i = 0; i < d.paths.length; i++) {
+    var p = d.paths[i];
+    html += '<div class="card">';
+    html += '<div class="card-emoji">' + d.emoji[i] + '</div>';
+    html += '<div class="card-body">';
+    html += '<div class="card-title">' + p.name + '</div>';
+    html += '<div class="card-row"><span class="tag tag-fee">预估费用：' + p.fee + '</span><span class="tag tag-timeline">时间线：' + p.timeline + '</span></div>';
+    html += '<div class="card-row"><span class="tag tag-condition">前置条件：' + p.condition + '</span></div>';
+    html += '<div class="card-row"><span class="tag tag-fit">适合谁：' + p.fit + '</span></div>';
+    html += '</div></div>';
+  }
+  html += '<div class="back-btn-wrap"><button class="back-btn" onclick="goBack()">重新输入分数</button></div>';
+
+  var rs = document.getElementById("resultSection");
+  rs.innerHTML = html;
+  rs.classList.add("show");
+  document.getElementById("inputSection").style.display = "none";
+  rs.scrollIntoView({ behavior: "smooth" });
+}
+
+function goBack() {
+  document.getElementById("resultSection").classList.remove("show");
+  document.getElementById("resultSection").innerHTML = "";
+  document.getElementById("inputSection").style.display = "block";
+  document.getElementById("scoreInput").value = "";
+  document.getElementById("scoreInput").focus();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.getElementById("scoreInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") search();
+});
+</script>
+
+</body>
+</html>
