@@ -171,15 +171,16 @@ body {
   .card-emoji { font-size: 2.2em; text-align: center; }
 }
 .note {
-  max-width: 520px;
+  max-width: 560px;
   margin: 0 auto 20px;
-  padding: 0 20px;
-  color: rgba(255,255,255,0.55);
-  font-size: 0.85em;
+  padding: 10px 20px;
+  color: #f0c040;
+  font-size: 0.9em;
   text-align: center;
   line-height: 1.7;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
 }
-.note strong { color: #f0c040; }
 </style>
 </head>
 <body>
@@ -208,7 +209,7 @@ body {
 </div>
 
 <div class="footer-fixed">
-  仅展示 <strong>2026 年秋季</strong> 可入学方案｜<strong>不限分数</strong>：马来西亚凭高中成绩直申 25-40 万｜爱尔兰无需高考、毕业 3 年工签｜美国社区大学 2+2 随时入学
+  仅展示 <strong>2026 年秋季</strong> 可入学方案｜<strong>300 分以下</strong>：爱尔兰高威/科克/利默里克凭高中毕业证直申，毕业 3 年工签｜美国社区大学 2+2 随时入学
 </div>
 
 <script>
@@ -255,13 +256,10 @@ const data = {
   },
   "<300": {
     label: "300 分以下",
-    subtitle: "核心策略：低成本国家直申 / 语言过渡，2026 年入学",
-    emoji: ["🇲🇾","🇮🇪","🇬🇧","🇦🇺"],
+    subtitle: "核心策略：凭高中成绩直申，2026 年入学",
+    emoji: ["🇮🇪"],
     paths: [
-      {name:"马来西亚公立 / 私立双联项目", fee:"全程 25-40 万", timeline:"6月→7月申请→offer→入学", condition:"凭高中成绩直申（无需高考），雅思 5.0-5.5", fit:"最低成本拿英美澳学位"},
-      {name:"爱尔兰高威 / 科克 / 利默里克大学", fee:"全程 50-70 万", timeline:"6月→7月申请→offer→入学", condition:"凭高中成绩直申（无需高考），雅思 5.5-6.0", fit:"英语国家、毕业 3 年无条件工签"},
-      {name:"英国综合类大学预科", fee:"全程 60-90 万", timeline:"6月→7月申请→8月offer→9月入学预科", condition:"预科 → 本科（无需高考），雅思 5.0-5.5", fit:"预算充足、想去英国"},
-      {name:"澳洲 TAFE 职业教育 → 大学", fee:"全程 50-80 万", timeline:"随时申请→入学→技能课程→转学分入大学", condition:"技能课程 → 转学分（无需高考），雅思 5.5+", fit:"走技能路线、转大学"}
+      {name:"爱尔兰高威 / 科克 / 利默里克大学 预科项目", fee:"全程 50-70 万", timeline:"6月→7月申请→offer→入学", condition:"凭高中毕业证直申（无需高考），雅思 5.5-6.0", fit:"英语国家、毕业 3 年无条件工签"}
     ]
   }
 };
